@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from "@angular/router";
-import { PageNotFoundComponent } from "./modules/home/pages/page-not-found/page-not-found.component";
 
 @NgModule({
   declarations: [
