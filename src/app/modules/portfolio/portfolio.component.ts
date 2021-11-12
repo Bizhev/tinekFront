@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PortfolioService} from "./portfolio.service";
 
 @Component({
   selector: 'app-portfolio',
@@ -6,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
-
-  constructor() { }
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+  tickers: any = [];
+  constructor(
+    private readonly _portfolioService: PortfolioService
+  ) { }
 
   ngOnInit(): void {
+    this.fetchProfile()
   }
+
+  fetchProfile(){
+    this._portfolioService.fetchProfile()
+      .subscribe((data: any) => {
+        console.log({ data });
+        this.tickers = data;
+      });
+  }
+
 
 
 }

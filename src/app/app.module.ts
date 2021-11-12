@@ -10,13 +10,13 @@ import { HeaderModule } from "./core/header/header.module";
 import { MatIconModule } from "@angular/material/icon"
 import { ProfileModule } from "./modules/profile/profile.module";
 import { HttpClientModule } from "@angular/common/http";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -29,6 +29,8 @@ import { HttpClientModule } from "@angular/common/http";
     HeaderModule,
     ProfileModule,
     HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioComponent } from './portfolio.component';
-import { MatListModule } from "@angular/material/list";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
-    PortfolioComponent
+    PortfolioComponent,
   ],
   imports: [
-    // MatListModule,
     CommonModule,
   ]
 })
