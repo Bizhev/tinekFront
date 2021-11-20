@@ -1,8 +1,50 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Robot trader: <b>v. 0.0.1 </b>(Tinkoff)</span>
+  <div>
+    <button
+      mat-icon-button
+      class="menu-icon"
+      aria-label="icon-button with menu icon"
+      mat-button [matMenuTriggerFor]="animals"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #animals="matMenu">
+      <button (click)="router.navigate(['/tickers']);" mat-menu-item >Все акции</button>
+      <button mat-menu-item [matMenuTriggerFor]="settings">Настройки</button>
+    </mat-menu>
+
+    <mat-menu #settings="matMenu">
+      <button mat-menu-item>Пользователи</button>
+      <button mat-menu-item>Добавление нового пользователя</button>
+    </mat-menu>
+
+    <mat-menu #fish="matMenu">
+      <button mat-menu-item>Baikal oilfish</button>
+      <button mat-menu-item>Bala shark</button>
+      <button mat-menu-item>Ballan wrasse</button>
+      <button mat-menu-item>Bamboo shark</button>
+      <button mat-menu-item>Banded killifish</button>
+    </mat-menu>
+
+    <mat-menu #amphibians="matMenu">
+      <button mat-menu-item>Sonoran desert toad</button>
+      <button mat-menu-item>Western toad</button>
+      <button mat-menu-item>Arroyo toad</button>
+      <button mat-menu-item>Yosemite toad</button>
+    </mat-menu>
+
+    <mat-menu #reptiles="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item>Banded Gila Monster</button>
+      <button mat-menu-item>Black Tree Monitor</button>
+      <button mat-menu-item>Blue Spiny Lizard</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+    </mat-menu>
+
+  </div>
+  <div  (click)="router.navigate(['/']);">
+    <span >Robot trader: <b>v. 0.0.1 </b>(Tinkoff)</span>
+  </div>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>

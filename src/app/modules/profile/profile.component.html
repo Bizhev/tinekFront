@@ -1,5 +1,8 @@
 <mat-card>
-<mat-card-title>{{ currentUser.fio }}</mat-card-title>
+<mat-card-title>
+  <span>{{ currentUser.fio }} </span>
+  <mat-icon class="settings" (click)="toSetting()" aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
+</mat-card-title>
 <mat-card-subtitle>1 000 000 $</mat-card-subtitle>
 <mat-card-actions>
   <mat-form-field appearance="fill">

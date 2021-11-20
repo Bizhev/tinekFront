@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from "./profile.service";
-import {AccountInterface} from "./interfaces/account.interface";
-import {CurrentUser, UserInterface} from "./interfaces/user.interface";
+import { AccountInterface } from "./interfaces/account.interface";
+import { CurrentUser, UserInterface } from "./interfaces/user.interface";
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +18,9 @@ export class ProfileComponent implements OnInit {
 
 users: UserInterface[] = [];
 
+  toSetting(){
+    console.log('Перехожу!');
+  }
 currentUser: CurrentUser  = {
   id: 0,
   fio: 'Сервер не доступен',

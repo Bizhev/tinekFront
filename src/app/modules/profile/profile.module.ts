@@ -20,6 +20,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
   ]
 })
 export class ProfileModule { }

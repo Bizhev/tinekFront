@@ -1,7 +1,14 @@
 <div>
-  <h3>HOUME</h3>
-<div>
-  {{ tickers }}
-  <button mat-stroked-button color="primary">Primary</button>
-</div>
+  <h3>Портфолио</h3>
+  <div>
+    <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let ticker of tickers">
+        {{ parseTickerInfo( ticker) }}
+      </mat-list-option>
+    </mat-selection-list>
+
+    <p>
+      Options selected: {{shoes.selectedOptions.selected.length}}
+    </p>
+  </div>
 </div>

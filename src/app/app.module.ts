@@ -10,7 +10,14 @@ import { HeaderModule } from "./core/header/header.module";
 import { MatIconModule } from "@angular/material/icon"
 import { ProfileModule } from "./modules/profile/profile.module";
 import { HttpClientModule } from "@angular/common/http";
-import {MatButtonModule} from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatButtonModule } from "@angular/material/button";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatListModule } from "@angular/material/list";
+import { PortfolioModule } from "./modules/portfolio/portfolio.module";
+import {TickersModule} from "./modules/tickers/tickers.module";
+
 
 @NgModule({
   declarations: [
@@ -26,11 +33,20 @@ import {MatButtonModule} from "@angular/material/button";
       registrationStrategy: 'registerWhenStable:30000'
     }),
     BrowserAnimationsModule,
-    HeaderModule,
+    //
     ProfileModule,
-    HttpClientModule,
+    PortfolioModule,
+    TickersModule,
+    // END
+    MatFormFieldModule,
     MatIconModule,
+    HeaderModule,
+    HttpClientModule,
+    MatChipsModule,
     MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

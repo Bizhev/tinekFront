@@ -26,6 +26,40 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+###
+```$xslt
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI: 13.0.2
+Node: 14.15.4
+Package Manager: npm 6.14.10
+OS: win32 x64
+
+Angular: 13.0.1
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+... service-worker
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1300.2
+@angular-devkit/build-angular   13.0.2
+@angular-devkit/core            13.0.2
+@angular-devkit/schematics      13.0.2
+@angular/cdk                    13.0.0
+@angular/cli                    13.0.2
+@angular/material               13.0.0
+@schematics/angular             13.0.2
+rxjs                            7.4.0
+typescript                      4.4.4
+
+```
 ### Pre
     npm install -g @angular/cli
 
@@ -34,3 +68,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 [Структура папок №2](https://medium.com/grapecity/angular-best-practices-for-2021-da9579bf5751)
 
 [Хабр](https://habr.com/ru/company/custis/blog/516290/)
+
+[MATERIAL ICONS](https://fonts.google.com/icons?selected=Material+Icons&icon.query=Currency)
+
+
+# others cmd
+```$xslt
+npm ls --depth 0
+
+```
