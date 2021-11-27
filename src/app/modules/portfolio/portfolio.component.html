@@ -1,14 +1,41 @@
 <div>
   <h3>Портфолио</h3>
   <div>
-    <mat-selection-list #shoes>
-      <mat-list-option *ngFor="let ticker of tickers">
-        {{ parseTickerInfo( ticker) }}
-      </mat-list-option>
-    </mat-selection-list>
-
-    <p>
-      Options selected: {{shoes.selectedOptions.selected.length}}
-    </p>
+    <app-profile></app-profile>
   </div>
+  <table mat-table [dataSource]="tickers" matSort (matSortChange)="announceSortChange($event)"
+         class="mat-elevation-z8">
+<!--    'ticker', 'name', 'lots', 'balance'-->
+    <!-- Ticker Column -->
+    <ng-container matColumnDef="ticker">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Ticker
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Name      </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Lots Column -->
+    <ng-container matColumnDef="lots">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Lots      </th>
+      <td mat-cell *matCellDef="let element"> {{element.lots}} </td>
+    </ng-container>
+
+    <!-- Balance Column -->
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Balance      </th>
+      <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from "./profile.service";
 import { AccountInterface } from "./interfaces/account.interface";
 import { CurrentUser, UserInterface } from "./interfaces/user.interface";
+import {TODO_ANY} from "../../../types/currency.type";
 
 @Component({
   selector: 'app-profile',
@@ -13,10 +14,8 @@ export class ProfileComponent implements OnInit {
     private readonly _profileService: ProfileService
   ) {
   }
-
-
-
-users: UserInterface[] = [];
+  users: UserInterface[] = [];
+  accounts: AccountInterface[] = []
 
   toSetting(){
     console.log('Перехожу!');
@@ -30,7 +29,7 @@ currentUser: CurrentUser  = {
 
  ngOnInit() {
    this.fetchProfile();
-   this.fetchUsers();
+   this.fetchAccounts();
   }
   fetchProfile(){
     this._profileService.fetchProfile()
@@ -44,6 +43,13 @@ currentUser: CurrentUser  = {
         this.users = data;
       });
   }
+  fetchAccounts(){
+    this._profileService.fetchAccounts()
+      .subscribe((res: TODO_ANY) =>{
+      console.log({ res})
+      this.accounts = res;
+    })
+  }
 
   changeUser(user: UserInterface){
     this._profileService.changeUser(user.id)
@@ -52,10 +58,10 @@ currentUser: CurrentUser  = {
       })
   }
   changeAccountId(account: AccountInterface) {
-    this._profileService.changeAccountId(account.brokerAccountId)
-      .subscribe(data=>{
-        // если успешно
-      })
+    // this._profileService.changeAccountId(account.brokerAccountId)
+    //   .subscribe(data=>{
+    //     // если успешно
+    //   })
 
   }
 

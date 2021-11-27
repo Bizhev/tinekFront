@@ -9,12 +9,14 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #animals="matMenu">
+      <button (click)="router.navigate(['/portfolio']);" mat-menu-item >Мой портфель</button>
       <button (click)="router.navigate(['/tickers']);" mat-menu-item >Все акции</button>
+      <button  (click)="router.navigate(['/users']);"  mat-menu-item>Пользователи</button>
+      <button mat-menu-item>Добавление нового пользователя</button>
       <button mat-menu-item [matMenuTriggerFor]="settings">Настройки</button>
     </mat-menu>
 
     <mat-menu #settings="matMenu">
-      <button mat-menu-item>Пользователи</button>
       <button mat-menu-item>Добавление нового пользователя</button>
     </mat-menu>
 

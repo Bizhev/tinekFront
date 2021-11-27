@@ -4,6 +4,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {TickersService} from "./tickers.service"
 import {Currency, TODO_ANY} from "../../../types/currency.type";
+import { format } from 'date-fns';
 export interface TickerTool {
   country: string;
   created_at: string;
@@ -27,7 +28,7 @@ export interface TickerTool {
 export class TickersComponent implements OnInit {
 
   columns: string[] = [
-    'type', 'ticker', 'name', 'currency', 'lot', 'minPriceIncrement', 'country'];
+    'type', 'ticker', 'name', 'currency', 'lot', 'minPriceIncrement', 'country', 'created_at'];
 
   tickers = new MatTableDataSource([])
 
@@ -74,5 +75,8 @@ export class TickersComponent implements OnInit {
   }
   syncTickers(){
     this._tickerService.syncTickers();
+  }
+  formatDate(date: string){
+    return format(new Date(date), 'dd.MM.yyyy в hh:mm:ss');
   }
 }

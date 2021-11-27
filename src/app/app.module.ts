@@ -17,6 +17,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatListModule } from "@angular/material/list";
 import { PortfolioModule } from "./modules/portfolio/portfolio.module";
 import {TickersModule} from "./modules/tickers/tickers.module";
+import {UserModule} from "./modules/user/user.module";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {TickersModule} from "./modules/tickers/tickers.module";
     ProfileModule,
     PortfolioModule,
     TickersModule,
+    UserModule,
     // END
     MatFormFieldModule,
     MatIconModule,

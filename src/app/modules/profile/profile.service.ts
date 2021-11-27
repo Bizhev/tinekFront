@@ -22,6 +22,11 @@ export class ProfileService {
     const url = `${this.backendUrl}/api/users`
     return this.http.get(url)
   }
+  fetchAccounts(force = false){
+    const url = `${this.backendUrl}/api/user/accounts`
+    return this.http.post<void>(url, { force })
+      .pipe();
+  }
   changeUser(id: number){
     const url = `${this.backendUrl}/api/profile`
     return this.http.post<void>(url, { id })

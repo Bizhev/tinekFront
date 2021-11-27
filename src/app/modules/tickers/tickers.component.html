@@ -14,7 +14,7 @@
 
   <!-- Type Column -->
   <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by type">Type</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header disabled sortActionDescription="Sort by type">Type</th>
     <td mat-cell *matCellDef="let element">
       <mat-icon class="tool-type" aria-hidden="false" aria-label="trading up icon">{{ getTypeIcon(element.type) }}</mat-icon>
     </td>
@@ -59,7 +59,7 @@
   <!-- Created_at Column -->
   <ng-container matColumnDef="created_at">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by created_at">Created_at</th>
-    <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.created_at)}} </td>
   </ng-container>
 
   <!-- Updated_at Column -->

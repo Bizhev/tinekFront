@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>Добавить пользователя</mat-card-title>
+  <mat-form-field appearance="fill">
+    <mat-label >ФИО</mat-label>
+    <input name="fio" ngDefaultControl [(ngModel)]="user.fio" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Название в БД</mat-label>
+    <input name="name" ngDefaultControl [(ngModel)]="user.name" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Token</mat-label>
+    <input name="token" ngDefaultControl [(ngModel)]="user.token" matInput>
+  </mat-form-field>
+  <span>Токен получать <a href="https://www.tinkoff.ru/invest/settings/">тут</a></span>
+  <button mat-raised-button (click)="userSave(user)" color="primary">Добавить</button>
+</mat-card>

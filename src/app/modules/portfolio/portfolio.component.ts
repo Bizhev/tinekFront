@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { PortfolioService } from "./portfolio.service";
-import {Currency, TODO_ANY} from "../../../types/currency.type";
+import { Currency, TODO_ANY } from "../../../types/currency.type";
+import { LiveAnnouncer } from "@angular/cdk/a11y";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatSort, Sort } from "@angular/material/sort";
 export interface TickerPortfolio {
   figi: string,
   instrumentType: TODO_ANY,
@@ -19,16 +22,38 @@ export interface TickerPortfolio {
   }
 
 }
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
-  tickers: TickerPortfolio[] = [];
+  tickers = this.initTable([]);
   constructor(
-    private readonly _portfolioService: PortfolioService
+    private readonly _portfolioService: PortfolioService,
+    private _liveAnnouncer: LiveAnnouncer,
   ) { }
+  displayedColumns: string[] = ['ticker', 'name', 'lots', 'balance'];
+
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
+  ngAfterViewInit() {
+    this.tickers.sort = this.sort || null;
+  }
+
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  initTable(data: TickerPortfolio[] ):MatTableDataSource<TickerPortfolio>{
+    return new MatTableDataSource(data)
+  }
 
   ngOnInit(): void {
     this.fetchProfile()
