@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
 currentUser: CurrentUser  = {
   id: 0,
   fio: 'Сервер не доступен',
-  accounts: [],
   currentAccountId: '0'
 }
 
@@ -37,6 +36,7 @@ currentUser: CurrentUser  = {
         this.currentUser = data;
       });
   }
+  // @deprecated
   fetchUsers(){
     this._profileService.fetchUsers()
       .subscribe((data:any) => {
@@ -45,24 +45,18 @@ currentUser: CurrentUser  = {
   }
   fetchAccounts(){
     this._profileService.fetchAccounts()
-      .subscribe((res: TODO_ANY) =>{
-      console.log({ res})
-      this.accounts = res;
+      .subscribe((accounts: TODO_ANY) =>{
+      console.log({ accounts })
+      this.accounts = accounts;
     })
   }
 
-  changeUser(user: UserInterface){
-    this._profileService.changeUser(user.id)
+  changeAccount(account: AccountInterface){
+    this._profileService.changeAccount(account.id)
       .subscribe(data=>{
+        console.log({ data });
         this.fetchProfile();
       })
-  }
-  changeAccountId(account: AccountInterface) {
-    // this._profileService.changeAccountId(account.brokerAccountId)
-    //   .subscribe(data=>{
-    //     // если успешно
-    //   })
-
   }
 
 }

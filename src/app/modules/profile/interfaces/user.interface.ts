@@ -11,7 +11,6 @@ export interface UserInterface {
   "cash_type"?: Currency,
   "created_at"?: Date,
   "updated_at"?: Date,
-  "accounts": AccountInterface[],
 }
 export interface CurrentUser extends UserInterface {
   currentAccountId: string;

@@ -1,25 +1,15 @@
-<mat-card>
+<mat-card class="profile">
 <mat-card-title>
   <span>{{ currentUser.fio }} </span>
   <mat-icon class="settings" (click)="toSetting()" aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
 </mat-card-title>
 <mat-card-subtitle>1 000 000 $</mat-card-subtitle>
 <mat-card-actions>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" style=" width: 100%; ">
     <mat-label>Выбор профиля</mat-label>
     <mat-select [value]="currentUser.id">
-      <mat-option *ngFor="let user of users" [value]="user.id" (click)="changeUser(user)" >
-        {{ user.id }}. {{ user.fio }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-
-  <mat-form-field appearance="fill">
-    <mat-label>Аккаунт</mat-label>
-    <mat-select [value]="currentUser.currentAccountId">
-      <mat-option *ngFor="let account of currentUser.accounts" [value]="account.brokerAccountId" (click)="changeAccountId(account)">
-        {{ account.brokerAccountType }}
+      <mat-option *ngFor="let account of accounts" [value]="account.brokerAccountId" (click)="changeAccount(account)" >
+        {{ account.id }}. {{ account.fio }} ({{ account.brokerAccountType }})
       </mat-option>
     </mat-select>
   </mat-form-field>

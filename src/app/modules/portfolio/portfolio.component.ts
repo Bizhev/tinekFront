@@ -29,17 +29,17 @@ export interface TickerPortfolio {
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
-  tickers = this.initTable([]);
+  tools = this.initTable([]);
   constructor(
     private readonly _portfolioService: PortfolioService,
     private _liveAnnouncer: LiveAnnouncer,
   ) { }
-  displayedColumns: string[] = ['ticker', 'name', 'lots', 'balance'];
+  displayedColumns: string[] = ['ticker', 'name', 'lots', 'balance', 'averagePositionPrice', 'lastPrice'];
 
   @ViewChild(MatSort) sort: MatSort | undefined;
 
   ngAfterViewInit() {
-    this.tickers.sort = this.sort || null;
+    this.tools.sort = this.sort || null;
   }
 
   /** Announce the change in sort state for assistive technology. */
@@ -67,10 +67,35 @@ export class PortfolioComponent implements OnInit {
     this._portfolioService.fetchProfile()
       .subscribe((data: any) => {
         console.log({ data });
-        this.tickers = data;
-      });
+
+        const tools = data
+          .filter((d: TODO_ANY) => {
+            return d.instrumentType === 'Stock'
+          })
+          .map((d: TODO_ANY) => {
+            return {
+              ...d,
+              figi: d.ticker.figi,
+              name: d.ticker.name,
+              lastPrice: d.ticker.lastPrice,
+              currency: d.ticker.currency,
+              minPriceIncrement: d.ticker.minPriceIncrement,
+              tick: d.ticker.ticker,
+            }
+          });
+        tools.ticker = tools.tick;
+        delete tools.tick;
+        const ETFs = data
+          .filter((d: TODO_ANY) => {
+            return d.instrumentType === 'Etf'
+          })
+        console.log({ ETFs });
+        const currency = data
+          .filter((d: TODO_ANY) => {
+            return d.instrumentType === 'Currency'
+          })
+        console.log({ currency });
+        this.tools = tools;
+      })
   }
-
-
-
 }

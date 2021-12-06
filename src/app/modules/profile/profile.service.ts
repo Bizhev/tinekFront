@@ -18,6 +18,7 @@ export class ProfileService {
     const url = `${this.backendUrl}/api/profile`;
     return this.http.get(url)
   }
+  // @deprecated
   fetchUsers(){
     const url = `${this.backendUrl}/api/users`
     return this.http.get(url)
@@ -27,14 +28,8 @@ export class ProfileService {
     return this.http.post<void>(url, { force })
       .pipe();
   }
-  changeUser(id: number){
-    const url = `${this.backendUrl}/api/profile`
-    return this.http.post<void>(url, { id })
-      .pipe(
-      );
-  }
-  changeAccountId(id: string) {
-    const url = `${this.backendUrl}/api/profile/change-account`
+  changeAccount(id: number){
+    const url = `${this.backendUrl}/api/user/change-account`
     return this.http.post<void>(url, { id })
       .pipe(
       );

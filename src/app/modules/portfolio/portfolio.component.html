@@ -3,7 +3,7 @@
   <div>
     <app-profile></app-profile>
   </div>
-  <table mat-table [dataSource]="tickers" matSort (matSortChange)="announceSortChange($event)"
+  <table mat-table [dataSource]="tools" matSort (matSortChange)="announceSortChange($event)"
          class="mat-elevation-z8">
 <!--    'ticker', 'name', 'lots', 'balance'-->
     <!-- Ticker Column -->
@@ -11,7 +11,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
         Ticker
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.ticker}} </td>
+      <td mat-cell *matCellDef="let e"> {{e.ticker.ticker}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -35,7 +35,25 @@
       <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
     </ng-container>
 
+    <!-- averagePositionPrice Column -->
+    <ng-container matColumnDef="averagePositionPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Средняя </th>
+      <td mat-cell *matCellDef="let element"> {{element.averagePositionPrice}} </td>
+    </ng-container>
+
+    <!-- Balance Column -->
+    <ng-container matColumnDef="lastPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+        Последняя цена </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastPrice}} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>
+
+<div>
+  <app-trade></app-trade>
 </div>
